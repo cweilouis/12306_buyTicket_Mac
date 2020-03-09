@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/caowei/Desktop/12306_Test/Build/Intermediates.noindex/Pods.build/Debug/Pods-12306_Test.build/module.modulemap \
-  /Users/caowei/Desktop/12306_Test/Build/Intermediates.noindex/Pods.build/Debug/AFNetworking.build/module.modulemap \
+  /Users/caowei/Desktop/12306_buyTicket_Mac/Build/Intermediates.noindex/Pods.build/Debug/Pods-12306_Test.build/module.modulemap \
+  /Users/caowei/Desktop/12306_buyTicket_Mac/Build/Intermediates.noindex/Pods.build/Debug/AFNetworking.build/module.modulemap \
   /Users/caowei/Desktop/12306_buyTicket_Mac/12306_Test/model/selTrainInfoModel.h \
   /Users/caowei/Desktop/12306_buyTicket_Mac/12306_Test/netWork/BuyHttpRequestManager.h \
   /Users/caowei/Desktop/12306_buyTicket_Mac/12306_Test/tool/ASHDatePicker.h \
@@ -16,9 +16,7 @@ dependencies: \
   /Users/caowei/Desktop/12306_buyTicket_Mac/Pods/AFNetworking/AFNetworking/AFSecurityPolicy.h \
   /Users/caowei/Desktop/12306_buyTicket_Mac/Pods/AFNetworking/AFNetworking/AFURLResponseSerialization.h \
   /Users/caowei/Desktop/12306_buyTicket_Mac/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.h \
-  /Users/caowei/Desktop/12306_buyTicket_Mac/Build/Intermediates.noindex/Pods.build/Debug/AFNetworking.build/module.modulemap \
-  /Users/caowei/Desktop/12306_buyTicket_Mac/Build/Intermediates.noindex/Pods.build/Debug/Pods-12306_Test.build/module.modulemap \
   /Users/caowei/Desktop/12306_buyTicket_Mac/Pods/AFNetworking/AFNetworking/AFNetworking.h \
-  /Users/caowei/Desktop/12306_Test/12306_Test/PrefixHeader.pch \
+  /Users/caowei/Desktop/12306_buyTicket_Mac/12306_Test/PrefixHeader.pch \
   /Users/caowei/Desktop/12306_buyTicket_Mac/12306_Test/tool/MBProgressHUD.m \
   12306_Test/tool/MBProgressHUD.h

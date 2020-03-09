@@ -455,7 +455,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/caowei/Desktop/12306_Test/12306_Test/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/12306_Test/PrefixHeader.pch";
 				INFOPLIST_FILE = 12306_Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -478,7 +478,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/caowei/Desktop/12306_Test/12306_Test/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/12306_Test/PrefixHeader.pch";
 				INFOPLIST_FILE = 12306_Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
