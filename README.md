@@ -5,7 +5,7 @@
 
 12306 接口变动频繁,并不能保证一直可以使用!!!!!!!!
 
-目前存在的问题:
+Problem:
 1. api.h 中   getRAIL_EXPIRATIONAndDEVICEIDUrl  
                    leftTicket_queryUr 
                    如果遇到无法加载验证码和无法查询余票,请重新抓包看下是否更改
