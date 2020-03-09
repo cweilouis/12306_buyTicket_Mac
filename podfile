@@ -1,0 +1,6 @@
+platform :macos, '10.9'
+use_frameworks!
+
+target '12306_Test' do
+pod 'AFNetworking', '~> 3.0'
+end
