@@ -100,7 +100,16 @@
             
             self.exchange_train_flag = dataArr[36];
             
-            self.isOntheday=[self isOnthadayWithStartTime:self.start_time endTime:self.arrive_time];
+            if ([self isOnthadayWithStartTime:self.start_time endTime:self.arrive_time] && [[self timeStrCovTimeNumWithStr:self.lishi].firstObject intValue]<=12) {
+                
+                self.isOntheday=YES;
+
+            }else{
+                
+                self.isOntheday=NO;
+
+            }
+            
         
             for (NSDictionary *dict in stationNameArr) {
                 

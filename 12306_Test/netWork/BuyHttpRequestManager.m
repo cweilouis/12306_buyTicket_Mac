@@ -226,7 +226,7 @@ static NSString *const cookieDicKey = @"cookieDic";
                         
                         }else if ([urlString containsString:submitOrderRequestUrl]){
                         
-                            if (dic && dic.count>0 && ([dic[@"data"] isEqualToString:@"Y"] && [dic[@"messages"]count]<1 )) {
+                            if (dic && dic.count>0 &&  [dic[@"messages"]count]<1 ) {
                                 
                                 successBlock(dic);
 

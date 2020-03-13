@@ -103,11 +103,11 @@
         }else{
             
             NSLog(@"信息加载失败!请重新选择车次!");
-            
-            [MBProgressHUD hideAllHUDsForView:weakself.view animated:YES];
 
         }
         
+        [MBProgressHUD hideAllHUDsForView:weakself.view animated:YES];
+
     } failure:^(NSError * _Nonnull error) {
         
         [MBProgressHUD hideAllHUDsForView:weakself.view animated:YES];

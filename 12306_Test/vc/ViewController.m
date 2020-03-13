@@ -32,6 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title=@"登录";
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showView) name:@"ticketsVCDismiss" object:nil];
   
     self.touchPointArr=[NSMutableArray array];
