@@ -107,9 +107,7 @@ static NSString *const cookieDicKey = @"cookieDic";
                 NSData *nsdata = [[NSData alloc] initWithBytes:buffer length:size];
                            
                 NSString *result = [[[[NSString alloc] initWithData:nsdata encoding:NSUTF8StringEncoding] componentsSeparatedByString:@"='"].lastObject componentsSeparatedByString:@"'"].firstObject;
-            
-               
-
+                           
             }else if ([responseObject isKindOfClass:NSClassFromString(@"_NSInlineData")]){
              
                 NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
