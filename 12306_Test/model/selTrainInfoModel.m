@@ -38,14 +38,33 @@
         
         for (NSString * str in dic[@"ticketInfoForPassengerForm"][@"leftDetails"]) {
             
-            if (![str containsString:@"无"]) {
+            if (![str containsString:@"无票"]) {
                 
                NSString *tmpStr=[str componentsSeparatedByString:@")"].firstObject;
-                
+                       
                 [self.CanBuyTick_left addObject:[NSString stringWithFormat:@"%@)",tmpStr]];
+
             }
         }
 
+        [self.CanBuyTick_left sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                       
+            NSInteger value1 = [[[obj1 componentsSeparatedByString:@"("].lastObject componentsSeparatedByString:@")"].firstObject integerValue];
+                 
+            NSInteger value2 = [[[obj2 componentsSeparatedByString:@"("].lastObject componentsSeparatedByString:@")"].firstObject integerValue];
+               
+            if (value1 < value2) {
+            
+                return NSOrderedAscending;
+                
+            }else{
+            
+                return NSOrderedDescending;
+            
+            }
+            
+        }];
+        
         NSString *tmpDate=[self timeStampConvertToTime:dic[@"ticketInfoForPassengerForm"][@"orderRequestDTO"][@"train_date"][@"time"]];
         
         self.date=[NSString stringWithFormat:@"%@ (%@)",tmpDate,[self weekDayStr:tmpDate]];
@@ -55,6 +74,8 @@
         self.start_time=dic[@"ticketInfoForPassengerForm"][@"queryLeftTicketRequestDTO"][@"start_time"];
         self.to_station_name=dic[@"ticketInfoForPassengerForm"][@"queryLeftTicketRequestDTO"][@"to_station_name"];
         self.arrive_time=dic[@"ticketInfoForPassengerForm"][@"queryLeftTicketRequestDTO"][@"arrive_time"];
+        
+        self.ticket_type_codes=[NSMutableArray arrayWithArray:dic[@"ticketInfoForPassengerForm"][@"cardTypes"]];
         
     }
    

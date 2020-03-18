@@ -51,3 +51,5 @@ static NSString* const submitOrderRequestUrl=@"https://kyfw.12306.cn/otn/leftTic
 static NSString* const initDcUrl=@"https://kyfw.12306.cn/otn/confirmPassenger/initDc";
 
 static NSString* const getPassengerDTOsUrl=@"https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs";
+
+static NSString* const checkOrderInfoUrl=@"https://kyfw.12306.cn/otn/confirmPassenger/checkOrderInfo";

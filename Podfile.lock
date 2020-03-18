@@ -12,17 +12,21 @@ PODS:
   - AFNetworking/Reachability (3.2.1)
   - AFNetworking/Security (3.2.1)
   - AFNetworking/Serialization (3.2.1)
+  - MJExtension (3.2.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - MJExtension (~> 3.2.1)
 
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - MJExtension
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
 
-PODFILE CHECKSUM: 6e47496576b0b6687367fde3a04d6f997f468a23
+PODFILE CHECKSUM: 3e82627a2815b90b6a50af130bbd41b4a2a06db8
 
 COCOAPODS: 1.8.4

@@ -27,6 +27,8 @@ typedef void (^FailureBlock)(NSError *error);
 
 -(void)RequestGetPassengerDTOsWithUrl:(NSString *)url  parameters:(id)parameters Success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock;
 
+-(void)RequestCheckOrderInfoWithUrl:(NSString *)url  parameters:(id)parameters Success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

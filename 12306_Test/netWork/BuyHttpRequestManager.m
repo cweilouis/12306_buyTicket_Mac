@@ -240,6 +240,20 @@ static NSString *const cookieDicKey = @"cookieDic";
                                 
                             }
                             
+                        }else if ([urlString containsString:getPassengerDTOsUrl]){
+                            
+                            if ([dic[@"data"][@"exMsg"]length]<1 && ![dic[@"data"][@"normal_passengers"]isKindOfClass:[NSNull class]]) {
+                                
+                                successBlock(dic);
+
+                            }else{
+                             
+                                NSLog(@"%@ -- %@",urlString,dic[@"data"][@"exMsg"]);
+                                
+                                successBlock(nil);
+
+                            }
+                                                        
                         }
                         
                     }
@@ -620,4 +634,9 @@ static NSString *const cookieDicKey = @"cookieDic";
 
 }
 
+-(void)RequestCheckOrderInfoWithUrl:(NSString *)url  parameters:(id)parameters Success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock{
+    
+    [self postWithURLString:url parameters:parameters successblock:successBlock failureblock:failureBlock];
+
+}
 @end

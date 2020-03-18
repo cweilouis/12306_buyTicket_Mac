@@ -18,6 +18,7 @@
 		614811E42410A5C300FD4077 /* buyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 614811E22410A5C300FD4077 /* buyVC.m */; };
 		614811E52410A5C300FD4077 /* buyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 614811E32410A5C300FD4077 /* buyVC.xib */; };
 		614811E82410DCBD00FD4077 /* BuyHttpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 614811E72410DCBD00FD4077 /* BuyHttpRequestManager.m */; };
+		614FBA1B241F4FB0005E2EFF /* passengersInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 614FBA1A241F4FB0005E2EFF /* passengersInfoModel.m */; };
 		61690FF123C878FD0001351F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 61690FF023C878FD0001351F /* AppDelegate.m */; };
 		61690FF423C878FD0001351F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61690FF323C878FD0001351F /* ViewController.m */; };
 		61690FF623C878FF0001351F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61690FF523C878FF0001351F /* Assets.xcassets */; };
@@ -47,12 +48,14 @@
 		613DF61D240F91D000554689 /* ASHDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASHDatePicker.h; sourceTree = "<group>"; };
 		613DF61E240F91D000554689 /* ASHDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASHDatePicker.m; sourceTree = "<group>"; };
 		613E51C92411F6A4004AF196 /* selTrainInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = selTrainInfoModel.h; sourceTree = "<group>"; };
-		613E51CA2411F6A4004AF196 /* selTrainInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = selTrainInfoModel.m; sourceTree = "<group>"; };
+		613E51CA2411F6A4004AF196 /* selTrainInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = selTrainInfoModel.m; sourceTree = "<group>"; wrapsLines = 1; };
 		614811E12410A5C300FD4077 /* buyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = buyVC.h; sourceTree = "<group>"; };
 		614811E22410A5C300FD4077 /* buyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = buyVC.m; sourceTree = "<group>"; };
 		614811E32410A5C300FD4077 /* buyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = buyVC.xib; sourceTree = "<group>"; };
 		614811E62410DCBD00FD4077 /* BuyHttpRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyHttpRequestManager.h; sourceTree = "<group>"; };
 		614811E72410DCBD00FD4077 /* BuyHttpRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyHttpRequestManager.m; sourceTree = "<group>"; };
+		614FBA19241F4FB0005E2EFF /* passengersInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = passengersInfoModel.h; sourceTree = "<group>"; };
+		614FBA1A241F4FB0005E2EFF /* passengersInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = passengersInfoModel.m; sourceTree = "<group>"; };
 		61690FEC23C878FD0001351F /* 12306_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12306_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61690FEF23C878FD0001351F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		61690FF023C878FD0001351F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -98,6 +101,8 @@
 				61C7A4A2240CFE78000CC703 /* searchTicketModel.m */,
 				613E51C92411F6A4004AF196 /* selTrainInfoModel.h */,
 				613E51CA2411F6A4004AF196 /* selTrainInfoModel.m */,
+				614FBA19241F4FB0005E2EFF /* passengersInfoModel.h */,
+				614FBA1A241F4FB0005E2EFF /* passengersInfoModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -305,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				614FBA1B241F4FB0005E2EFF /* passengersInfoModel.m in Sources */,
 				614811E42410A5C300FD4077 /* buyVC.m in Sources */,
 				61174CFC23D684CF0009B8DD /* ticketsVC.m in Sources */,
 				61174D0023D6AF5A0009B8DD /* ticketsHttpRequestManager.m in Sources */,

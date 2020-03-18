@@ -71,6 +71,19 @@
   
     return YES;
 }
+- (IBAction)exchangeStationAction:(id)sender {
+    
+    if (self.formTF.stringValue.length>0 && self.toTF.stringValue.length>0) {
+        
+        NSString *tmpStr=self.formTF.stringValue;
+        
+        self.formTF.stringValue=self.toTF.stringValue;
+        
+        self.toTF.stringValue=tmpStr;
+        
+    }
+    
+}
 
 - (IBAction)searchClick:(id)sender {
     

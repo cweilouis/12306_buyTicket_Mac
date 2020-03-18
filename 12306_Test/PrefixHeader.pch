@@ -21,6 +21,8 @@
 #import "ASHDatePicker.h"
 #import "BuyHttpRequestManager.h"
 #import "selTrainInfoModel.h"
+#import "MJExtension.h"
+#import "passengersInfoModel.h"
 //#endif
 #endif /* PrefixHeader_pch */
 

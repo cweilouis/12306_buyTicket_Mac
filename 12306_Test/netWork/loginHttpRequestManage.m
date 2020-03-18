@@ -285,6 +285,14 @@ static NSString *const RAIL_EXPIRATIONAndDEVICEIDKey = @"RAIL_EXPIRATIONAndDEVIC
                         }else if ([urlString isEqualToString:loginUrl] || [urlString isEqualToString:uamtkUrl] || [urlString isEqualToString:uamauthclientUrl] || [urlString isEqualToString:initMy12306ApiUrl]){
                             
                             dic =[self dictionaryWithJsonString:result];
+                            
+                            if ([dic[@"result_code"] intValue]==1) {
+                                
+                                NSLog(@"error --- %@",dic[@"result_message"]);
+                                
+                                dic=nil;
+
+                            }
                         }
                     }
                     
