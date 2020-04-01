@@ -14,7 +14,7 @@
     
     if (self = [super init]) {
     
-        self.globalRepeatSubmitToken=dic[@"globalRepeatSubmitToken"];
+        self.globalRepeatSubmitToken=[dic[@"globalRepeatSubmitToken"] stringByReplacingOccurrencesOfString:@" " withString:@""];
         
         self.certificateTypeArr=[NSMutableArray arrayWithArray:dic[@"ticketInfoForPassengerForm"][@"cardTypes"]];
         
@@ -67,15 +67,38 @@
         
         NSString *tmpDate=[self timeStampConvertToTime:dic[@"ticketInfoForPassengerForm"][@"orderRequestDTO"][@"train_date"][@"time"]];
         
-        self.date=[NSString stringWithFormat:@"%@ (%@)",tmpDate,[self weekDayStr:tmpDate]];
+        self.date=[NSString stringWithFormat:@"%@ (%@)",tmpDate,[self weekDayStr:tmpDate isEn:NO]];
+        
         self.station_train_code=dic[@"ticketInfoForPassengerForm"][@"queryLeftTicketRequestDTO"][@"station_train_code"];
+        
         self.from_station_name=dic[@"ticketInfoForPassengerForm"][@"queryLeftTicketRequestDTO"][@"from_station_name"];
         
         self.start_time=dic[@"ticketInfoForPassengerForm"][@"queryLeftTicketRequestDTO"][@"start_time"];
+        
         self.to_station_name=dic[@"ticketInfoForPassengerForm"][@"queryLeftTicketRequestDTO"][@"to_station_name"];
+        
         self.arrive_time=dic[@"ticketInfoForPassengerForm"][@"queryLeftTicketRequestDTO"][@"arrive_time"];
         
-        self.ticket_type_codes=[NSMutableArray arrayWithArray:dic[@"ticketInfoForPassengerForm"][@"cardTypes"]];
+        self.ticket_type_codes=[NSMutableArray arrayWithArray:dic[@"ticketInfoForPassengerForm"][@"cardTypes"]];        
+      
+        self.seat_type_codes=dic[@"ticketInfoForPassengerForm"][@"limitBuySeatTicketDTO"][@"seat_type_codes"];
+        
+        self.leftTicketStr=dic[@"ticketInfoForPassengerForm"][@"leftTicketStr"];
+        
+        self.purpose_codes=dic[@"ticketInfoForPassengerForm"][@"purpose_codes"];
+
+        self.train_location=dic[@"ticketInfoForPassengerForm"][@"train_location"];
+      
+        self.train_no=dic[@"ticketInfoForPassengerForm"][@"orderRequestDTO"][@"train_no"];
+
+        NSArray *train_dateArr=[[self timeStampConvertToTime: dic[@"ticketInfoForPassengerForm"][@"orderRequestDTO"][@"train_date"][@"time"]] componentsSeparatedByString:@"-"];
+        
+        NSArray *tmpWeekAndMonthArr=[self getWeekAndMonthWithTimeStr:[self timeStampConvertToTime: dic[@"ticketInfoForPassengerForm"][@"orderRequestDTO"][@"train_date"][@"time"]] month:train_dateArr.count>2?train_dateArr[1]:@""];
+        
+        self.train_date=[NSString stringWithFormat:@"%@ %@ %@ %@ 00:00:00 GMT+0800 (中国标准时间)",tmpWeekAndMonthArr.firstObject,tmpWeekAndMonthArr.lastObject,train_dateArr.lastObject,train_dateArr.firstObject];
+        self.fromStationTelecode=dic[@"ticketInfoForPassengerForm"][@"orderRequestDTO"][@"from_station_telecode"];
+        self.toStationTelecode=dic[@"ticketInfoForPassengerForm"][@"orderRequestDTO"][@"to_station_telecode"];
+        self.key_check_isChange=dic[@"ticketInfoForPassengerForm"][@"key_check_isChange"];
         
     }
    
@@ -98,7 +121,7 @@
     return [currentDateStr componentsSeparatedByString:@" "].firstObject;
 }
 
-- (NSString*)weekDayStr:(NSString*)format{
+- (NSString*)weekDayStr:(NSString*)format isEn:(BOOL)isEn{
     
     NSString *weekDayStr = nil;
    
@@ -141,25 +164,25 @@
     
     switch(week) {
         case 1:
-            weekDayStr =@"星期日";
+            weekDayStr = isEn?@"Sun":@"星期日";
             break;
         case 2:
-            weekDayStr =@"星期一";
+            weekDayStr = isEn?@"Mon":@"星期一";
             break;
         case 3:
-            weekDayStr =@"星期二";
+            weekDayStr = isEn?@"Tue":@"星期二";
             break;
         case 4:
-            weekDayStr =@"星期三";
+            weekDayStr = isEn?@"Wed":@"星期三";
             break;
         case 5:
-            weekDayStr =@"星期四";
+            weekDayStr = isEn?@"Thu":@"星期四";
             break;
         case 6:
-            weekDayStr =@"星期五";
+            weekDayStr = isEn?@" Fri":@"星期五";
             break;
         case 7:
-            weekDayStr =@"星期六";
+            weekDayStr = isEn?@"Sat":@"星期六";
             break;
         default:
             weekDayStr =@"";
@@ -167,4 +190,74 @@
     }
     return weekDayStr;
 }
+
+-(NSString *)getEnMonthWithStr:(NSString *)timeStr{
+    
+    NSString *enMonth=@"";
+    
+    switch (timeStr.intValue) {
+        case 1:
+            enMonth=@"Jan";
+            
+            break;
+        case 2:
+            enMonth=@"Feb";
+
+            break;
+         case 3:
+            enMonth=@"Mar";
+
+            break;
+         case 4:
+            enMonth=@"Apr";
+
+            break;
+          case 5:
+            enMonth=@"May";
+
+            break;
+          case 6:
+            enMonth=@"Jun";
+
+            break;
+          case 7:
+            enMonth=@"Jul";
+
+            break;
+          case 8:
+            enMonth=@"Aug";
+
+            break;
+          case 9:
+            enMonth=@"Sept";
+
+            break;
+          case 10:
+            enMonth=@"Oct";
+
+            break;
+          case 11:
+            enMonth=@"Nov";
+
+            break;
+          case 12:
+            enMonth=@"Dec";
+
+            break;
+        default:
+            break;
+    }
+    
+    return enMonth;
+}
+
+
+-(NSArray *)getWeekAndMonthWithTimeStr:(NSString *)timeStr month:(NSString *)month{
+    
+    NSArray *arr=[NSArray arrayWithObjects:[self weekDayStr:timeStr isEn:YES],[self getEnMonthWithStr:month],nil];
+    
+    return arr;
+}
+
+
 @end

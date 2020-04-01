@@ -49,6 +49,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *sex_name;
 @property(nonatomic,copy)NSString *total_times;
 @property(nonatomic,assign)BOOL isSel;
+@property(nonatomic,copy)NSString *xibie;//所选席别
+
 @end
 
 NS_ASSUME_NONNULL_END

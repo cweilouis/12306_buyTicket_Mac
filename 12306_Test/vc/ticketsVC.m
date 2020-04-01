@@ -9,6 +9,7 @@
 #import "ticketsVC.h"
 #import "searchTicketModel.h"
 #import "buyVC.h"
+#import "orderManage.h"
 
 @interface ticketsVC ()<NSTableViewDelegate,NSTableViewDataSource,ASHDatePickerDelegate>
 @property (weak) IBOutlet NSColorWell *bgView;
@@ -29,7 +30,7 @@
 {
     [super viewWillAppear];
     self.view.window.restorable = NO;
-    [self.view.window setContentSize:NSMakeSize(1000, 600)];
+    [self.view.window setContentSize:NSMakeSize(900, 600)];
    
 }
 
@@ -37,7 +38,7 @@
     [super viewDidLoad];
     
     self.title=@"查票";
-
+    
     self.nameLab.stringValue=self.nameStr;
     
     self.stationArr=[NSMutableArray array];
@@ -53,7 +54,6 @@
     self.tableView.selectionHighlightStyle=NSTableViewSelectionHighlightStyleNone;
     
     [self getStationInfo];  
-    
 }
 
 -(NSMutableArray *)searchTicketArr{
@@ -106,6 +106,14 @@
     [self.tableView reloadData];
     
     [self searchTicketsWithAllWrittenForm:self.formTF.stringValue shorthandForm:[self getShorthandStationWithSationStr:self.formTF.stringValue] AllWrittenTo:self.toTF.stringValue shorthandTo:[self getShorthandStationWithSationStr:self.toTF.stringValue] currentTime:[NSString currentDate] selTime:[NSString coverTimeWithStr:self.datePick.dateValue]];
+        
+}
+- (IBAction)ticketOrderAction:(id)sender {
+    
+    orderManage *vc=[[orderManage alloc]init];
+        
+    [self presentViewControllerAsModalWindow:vc];
+
         
 }
 

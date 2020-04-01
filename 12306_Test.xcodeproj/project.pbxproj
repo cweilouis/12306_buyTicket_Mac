@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F845DE62432D639008973C6 /* orderManageHttpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F845DE52432D639008973C6 /* orderManageHttpRequestManager.m */; };
+		1F845E1C2432EC3C008973C6 /* OSXPullToRefreshScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F845E1B2432EC3C008973C6 /* OSXPullToRefreshScrollView.m */; };
+		1F845E2224332EAF008973C6 /* myOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F845E2124332EAF008973C6 /* myOrderModel.m */; };
+		1FB876CF242DA8EA00B181ED /* confirmOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB876CD242DA8EA00B181ED /* confirmOrderVC.m */; };
+		1FB876D0242DA8EA00B181ED /* confirmOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB876CE242DA8EA00B181ED /* confirmOrderVC.xib */; };
+		1FBEC5F82431BD3400FC0C15 /* orderManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBEC5F62431BD3400FC0C15 /* orderManage.m */; };
+		1FBEC5F92431BD3400FC0C15 /* orderManage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FBEC5F72431BD3400FC0C15 /* orderManage.xib */; };
 		61174CFC23D684CF0009B8DD /* ticketsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 61174CFA23D684CF0009B8DD /* ticketsVC.m */; };
 		61174CFD23D684CF0009B8DD /* ticketsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61174CFB23D684CF0009B8DD /* ticketsVC.xib */; };
 		61174D0023D6AF5A0009B8DD /* ticketsHttpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 61174CFF23D6AF5A0009B8DD /* ticketsHttpRequestManager.m */; };
@@ -30,6 +37,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F845DE42432D639008973C6 /* orderManageHttpRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = orderManageHttpRequestManager.h; sourceTree = "<group>"; };
+		1F845DE52432D639008973C6 /* orderManageHttpRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = orderManageHttpRequestManager.m; sourceTree = "<group>"; };
+		1F845E1A2432EC3C008973C6 /* OSXPullToRefreshScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXPullToRefreshScrollView.h; sourceTree = "<group>"; };
+		1F845E1B2432EC3C008973C6 /* OSXPullToRefreshScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXPullToRefreshScrollView.m; sourceTree = "<group>"; };
+		1F845E2024332EAF008973C6 /* myOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myOrderModel.h; sourceTree = "<group>"; };
+		1F845E2124332EAF008973C6 /* myOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myOrderModel.m; sourceTree = "<group>"; };
+		1FB876CC242DA8EA00B181ED /* confirmOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = confirmOrderVC.h; sourceTree = "<group>"; };
+		1FB876CD242DA8EA00B181ED /* confirmOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = confirmOrderVC.m; sourceTree = "<group>"; };
+		1FB876CE242DA8EA00B181ED /* confirmOrderVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = confirmOrderVC.xib; sourceTree = "<group>"; };
+		1FBEC5F52431BD3400FC0C15 /* orderManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = orderManage.h; sourceTree = "<group>"; };
+		1FBEC5F62431BD3400FC0C15 /* orderManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = orderManage.m; sourceTree = "<group>"; };
+		1FBEC5F72431BD3400FC0C15 /* orderManage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = orderManage.xib; sourceTree = "<group>"; };
 		2AA0153301098D8055A1E839 /* Pods-12306_Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12306_Test.release.xcconfig"; path = "Target Support Files/Pods-12306_Test/Pods-12306_Test.release.xcconfig"; sourceTree = "<group>"; };
 		45E125E34BD19487697A85C8 /* Pods-12306_Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12306_Test.debug.xcconfig"; path = "Target Support Files/Pods-12306_Test/Pods-12306_Test.debug.xcconfig"; sourceTree = "<group>"; };
 		61174CF923D684CF0009B8DD /* ticketsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ticketsVC.h; sourceTree = "<group>"; };
@@ -53,7 +72,7 @@
 		614811E22410A5C300FD4077 /* buyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = buyVC.m; sourceTree = "<group>"; };
 		614811E32410A5C300FD4077 /* buyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = buyVC.xib; sourceTree = "<group>"; };
 		614811E62410DCBD00FD4077 /* BuyHttpRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyHttpRequestManager.h; sourceTree = "<group>"; };
-		614811E72410DCBD00FD4077 /* BuyHttpRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyHttpRequestManager.m; sourceTree = "<group>"; };
+		614811E72410DCBD00FD4077 /* BuyHttpRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyHttpRequestManager.m; sourceTree = "<group>"; wrapsLines = 0; };
 		614FBA19241F4FB0005E2EFF /* passengersInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = passengersInfoModel.h; sourceTree = "<group>"; };
 		614FBA1A241F4FB0005E2EFF /* passengersInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = passengersInfoModel.m; sourceTree = "<group>"; };
 		61690FEC23C878FD0001351F /* 12306_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12306_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +122,8 @@
 				613E51CA2411F6A4004AF196 /* selTrainInfoModel.m */,
 				614FBA19241F4FB0005E2EFF /* passengersInfoModel.h */,
 				614FBA1A241F4FB0005E2EFF /* passengersInfoModel.m */,
+				1F845E2024332EAF008973C6 /* myOrderModel.h */,
+				1F845E2124332EAF008973C6 /* myOrderModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -155,6 +176,12 @@
 				614811E12410A5C300FD4077 /* buyVC.h */,
 				614811E22410A5C300FD4077 /* buyVC.m */,
 				614811E32410A5C300FD4077 /* buyVC.xib */,
+				1FB876CC242DA8EA00B181ED /* confirmOrderVC.h */,
+				1FB876CD242DA8EA00B181ED /* confirmOrderVC.m */,
+				1FB876CE242DA8EA00B181ED /* confirmOrderVC.xib */,
+				1FBEC5F52431BD3400FC0C15 /* orderManage.h */,
+				1FBEC5F62431BD3400FC0C15 /* orderManage.m */,
+				1FBEC5F72431BD3400FC0C15 /* orderManage.xib */,
 			);
 			path = vc;
 			sourceTree = "<group>";
@@ -169,6 +196,8 @@
 				61174CFF23D6AF5A0009B8DD /* ticketsHttpRequestManager.m */,
 				614811E62410DCBD00FD4077 /* BuyHttpRequestManager.h */,
 				614811E72410DCBD00FD4077 /* BuyHttpRequestManager.m */,
+				1F845DE42432D639008973C6 /* orderManageHttpRequestManager.h */,
+				1F845DE52432D639008973C6 /* orderManageHttpRequestManager.m */,
 			);
 			path = netWork;
 			sourceTree = "<group>";
@@ -176,6 +205,8 @@
 		61CCD4F523D6DC4900AE147E /* tool */ = {
 			isa = PBXGroup;
 			children = (
+				1F845E1A2432EC3C008973C6 /* OSXPullToRefreshScrollView.h */,
+				1F845E1B2432EC3C008973C6 /* OSXPullToRefreshScrollView.m */,
 				613DF61D240F91D000554689 /* ASHDatePicker.h */,
 				613DF61E240F91D000554689 /* ASHDatePicker.m */,
 				612B476723CC1D1D000B8160 /* MBProgressHUD.h */,
@@ -255,9 +286,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				61174CFD23D684CF0009B8DD /* ticketsVC.xib in Resources */,
+				1FB876D0242DA8EA00B181ED /* confirmOrderVC.xib in Resources */,
 				61690FF623C878FF0001351F /* Assets.xcassets in Resources */,
 				61690FF923C878FF0001351F /* Main.storyboard in Resources */,
 				614811E52410A5C300FD4077 /* buyVC.xib in Resources */,
+				1FBEC5F92431BD3400FC0C15 /* orderManage.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,15 +347,20 @@
 				614811E42410A5C300FD4077 /* buyVC.m in Sources */,
 				61174CFC23D684CF0009B8DD /* ticketsVC.m in Sources */,
 				61174D0023D6AF5A0009B8DD /* ticketsHttpRequestManager.m in Sources */,
+				1F845E2224332EAF008973C6 /* myOrderModel.m in Sources */,
 				612B473D23CBFC38000B8160 /* loginHttpRequestManage.m in Sources */,
 				612B476923CC1D1D000B8160 /* MBProgressHUD.m in Sources */,
 				61C7A4A3240CFE78000CC703 /* searchTicketModel.m in Sources */,
+				1F845DE62432D639008973C6 /* orderManageHttpRequestManager.m in Sources */,
 				612B474023CC066D000B8160 /* NSString+Time.m in Sources */,
 				613DF61F240F91D000554689 /* ASHDatePicker.m in Sources */,
 				61690FF423C878FD0001351F /* ViewController.m in Sources */,
 				613E51CB2411F6A4004AF196 /* selTrainInfoModel.m in Sources */,
 				61690FFC23C878FF0001351F /* main.m in Sources */,
+				1FB876CF242DA8EA00B181ED /* confirmOrderVC.m in Sources */,
+				1FBEC5F82431BD3400FC0C15 /* orderManage.m in Sources */,
 				614811E82410DCBD00FD4077 /* BuyHttpRequestManager.m in Sources */,
+				1F845E1C2432EC3C008973C6 /* OSXPullToRefreshScrollView.m in Sources */,
 				61690FF123C878FD0001351F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

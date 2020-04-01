@@ -7,6 +7,7 @@
 //
 
 #import "buyVC.h"
+#import "confirmOrderVC.h"
 
 @interface buyVC ()<NSTableViewDelegate,NSTableViewDataSource>
 @property (weak) IBOutlet NSTextField *trainInfoView;
@@ -25,7 +26,7 @@
 {
     [super viewWillAppear];
     self.view.window.restorable = NO;
-    [self.view.window setContentSize:NSMakeSize(800, 600)];
+    [self.view.window setContentSize:NSMakeSize(800, 500)];
     
     
 }
@@ -35,6 +36,10 @@
     
     self.title=@"购买";
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(BuySuccess) name:@"BuyTicketSuccess" object:nil];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     [self.scorView setHasHorizontalScroller:YES];
           
     [self.scorView setBorderType:NSGrooveBorder];
@@ -48,11 +53,16 @@
     self.tableView.delegate=self;
     
     self.tableView.dataSource=self;
+        self.tableView.selectionHighlightStyle=NSTableViewSelectionHighlightStyleNone;
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-     
     [self requestInfo];
             
+}
+
+-(void)BuySuccess{
+    
+    [self.view.window close];
+    
 }
 
 -(void)CreatePassengersViewWithArr:(NSMutableArray *)arr{
@@ -177,11 +187,11 @@
         
         passengersInfoModel *model=self.selPassengerArr[index];
         
-        NSTextField *xuhaoLab=[cellView viewWithTag:101];
+        NSTextField *index_idLab=[cellView viewWithTag:101];
         
-        if (xuhaoLab) {
+        if (index_idLab) {
             
-            xuhaoLab.stringValue=[NSString stringWithFormat:@"%d",model.index_id.intValue+1];
+            index_idLab.stringValue=[NSString stringWithFormat:@"%d",model.index_id.intValue+1];
         }
         
         NSPopUpButton *xibie=[cellView viewWithTag:103];
@@ -193,19 +203,66 @@
             [xibie setTitle:self.sltModel.CanBuyTick_left.firstObject];
             
             [xibie addItemsWithTitles:self.sltModel.CanBuyTick_left];
+        
+            for (NSDictionary *dic in self.sltModel.seat_type_codes) {
+                
+                if ([self.sltModel.CanBuyTick_left.firstObject containsString:dic[@"value"]]) {
+                    
+                    model.xibie=dic[@"id"];
+                    
+                    break;
+                }
+            }
             
             [xibie setAction:@selector(xibieChange:)];
         }
+        
+        NSTextField *passenger_nameLab=[cellView viewWithTag:104];
+               
+        if (passenger_nameLab) {
+        
+            passenger_nameLab.stringValue=model.passenger_name;
+
+        }
+        
+        NSTextField *passenger_id_noLab=[cellView viewWithTag:106];
+               
+        if (passenger_id_noLab) {
+        
+            passenger_id_noLab.stringValue=model.passenger_id_no;
+
+        }
+        
+        NSTextField *mobile_noLab=[cellView viewWithTag:107];
+               
+        if (mobile_noLab) {
+        
+            mobile_noLab.stringValue=model.mobile_no;
+
+        }
+        
     }
 }
 
 
 -(void)xibieChange:(NSPopUpButton *)xibie{
     
-    NSInteger clickIndex=[self.tableView rowForView:xibie];
+    NSInteger cellIndex=[self.tableView rowForView:xibie];
 
-    
-    
+    if (self.selPassengerArr.count > cellIndex) {
+        
+        passengersInfoModel *model=self.selPassengerArr[cellIndex];
+        
+        for (NSDictionary *dic in self.sltModel.seat_type_codes) {
+                       
+            if ([xibie.selectedItem.title containsString:dic[@"value"]]) {
+                           
+                model.xibie=dic[@"id"];
+                           
+                break;
+            }
+        }
+    }
 }
 
 - (IBAction)deleteSelPasAction:(NSButton *)sender {
@@ -214,41 +271,40 @@
         
         NSInteger deleteIndex=[self.tableView rowForView:sender];
         
-        passengersInfoModel *model=self.selPassengerArr[deleteIndex];
-        
-        for (passengersInfoModel *tmpModel in self.passengerInfoArr) {
-            
-            if ([model.index_id isEqualToString:tmpModel.index_id]) {
-                
-                tmpModel.isSel=NO;
-                
-                break;
-            }
-        }
-        
-        for (NSButton *btn in self.scorView.documentView.subviews) {
-            
-            if ([btn.title isEqualToString:model.passenger_name]) {
-                
-                btn.state=NO;
-                
-                break;
-            }
-        }
-        
         if (self.selPassengerArr.count > deleteIndex) {
+        
+            passengersInfoModel *model=self.selPassengerArr[deleteIndex];
+            
+            for (passengersInfoModel *tmpModel in self.passengerInfoArr) {
+                
+                if ([model.index_id isEqualToString:tmpModel.index_id]) {
+                    
+                    tmpModel.isSel=NO;
+                    
+                    break;
+                }
+            }
+            
+            for (NSButton *btn in self.scorView.documentView.subviews) {
+                
+                if ([btn.title isEqualToString:model.passenger_name]) {
+                    
+                    btn.state=NO;
+                    
+                    break;
+                }
+            }
             
             [self.selPassengerArr removeObjectAtIndex:deleteIndex];
-            
+                                                      
             [self.tableView reloadData];
 
             if (self.selPassengerArr.count<1) {
-                
+                               
                 self.tableView.hidden=YES;
-                
+                               
             }
         }
-        
     }
 }
 
@@ -333,7 +389,178 @@
 }
 
 -(void)requestCheckOrderInfo{
-    // 一个乘客 座位类型,passenger_flag,passenger_type/passenger_id_type_code,名字,证件类型,证件号,电话号码,isOldThan60/isYongThan10/isYongThan14/is_buy_ticket,allEncStr
+
+    __weak typeof(self)weakself=self;
     
+    NSMutableDictionary *parameters=[self CheckOrderInfoDicWithArr:self.selPassengerArr globalRepeatSubmitToken:self.sltModel.globalRepeatSubmitToken];
+    
+    NSString *SeatType=[parameters[@"passengerTicketStr"]length]>1? [parameters[@"passengerTicketStr"]substringWithRange:NSMakeRange(0, 1)]:@"";
+    
+    NSMutableDictionary *parameters1=[self getQueueCountDicWithSeatType:SeatType];
+    
+    [[BuyHttpRequestManager shaerd]RequestCheckOrderInfoWithUrl:checkOrderInfoUrl parameters:parameters parameters1:parameters1 Success:^(NSDictionary * _Nonnull data) {
+     
+        if (data && data.count>0) {
+            
+            [weakself gotoSureVCWithData:data CheckOrderInfoData:[parameters copy] getQueueCountData:[parameters1 copy]];
+            
+        }
+                
+    } failure:^(NSError * _Nonnull error) {
+                
+    }];
 }
+
+-(void)gotoSureVCWithData:(NSDictionary *)data CheckOrderInfoData:(NSMutableDictionary *)dict getQueueCountData:(NSMutableDictionary *)dict1{
+    
+    confirmOrderVC *vc=[[confirmOrderVC alloc]init];
+     
+     if ([data[@"canChooseSeats"] isEqualToString:@"Y"]) {
+         
+         vc.canSelSeat=YES;
+    
+     }else{
+         
+         vc.canSelSeat=NO;
+
+     }
+     
+     vc.numberOfline=[data[@"count"] intValue];
+     
+     vc.numberOfPassengers=self.selPassengerArr.count;
+     
+     if ([data[@"ticket"] containsString:@","]) {
+         
+         NSArray *ticketNumArr=[data[@"ticket"] componentsSeparatedByString:@","];
+         
+         BOOL ishave=NO;
+         
+         for (NSString *tickStr in ticketNumArr) {
+             
+             if ([tickStr intValue]>0) {
+                 
+                 ishave=YES;
+                 
+                 break;
+             }
+         }
+         
+         if (ishave) {
+             
+             vc.isHaveticket=YES;
+         
+         }else{
+             
+             vc.isHaveticket=NO;
+
+         }
+         
+     }else{
+         
+         if ([data[@"ticket"] intValue]>0) {
+             
+             vc.isHaveticket=YES;
+         
+         }else{
+             
+             vc.isHaveticket=NO;
+
+         }
+     }
+       
+    vc.CheckOrderInfoData=dict;
+
+    vc.getQueueCountData=dict1;
+
+    vc.key_check_isChange=self.sltModel.key_check_isChange;
+    
+    [self presentViewControllerAsSheet:vc];
+}
+
+-(NSMutableDictionary *)CheckOrderInfoDicWithArr:(NSMutableArray *)selPassArr globalRepeatSubmitToken:(NSString *)globalRepeatSubmitToken{
+    
+    NSMutableDictionary *dict=[NSMutableDictionary dictionary];
+    
+    [dict setObject:@"2" forKey:@"cancel_flag"];
+    
+    [dict setObject:@"000000000000000000000000000000" forKey:@"bed_level_order_num"];
+
+    [dict setObject:@"dc" forKey:@"tour_flag"];
+
+    [dict setObject:@"" forKey:@"randCode"];
+
+    [dict setObject:@"1" forKey:@"whatsSelect"];
+
+    [dict setObject:@"" forKey:@"sessionId"];
+
+    [dict setObject:@"" forKey:@"sig"];
+    
+    [dict setObject:@"nc_login" forKey:@"scene"];
+
+    [dict setObject:@"" forKey:@"_json_att"];
+
+    [dict setObject:self.sltModel.globalRepeatSubmitToken forKey:@"REPEAT_SUBMIT_TOKEN"];
+    
+    NSString *tmpOldPassengerStr=@"";
+    
+    NSString *tmpPassengerTicketStr=@"";
+    
+    for (int i=0; i<self.selPassengerArr.count; i++) {
+        
+        passengersInfoModel *model=self.selPassengerArr[i];
+        
+        tmpOldPassengerStr=[tmpOldPassengerStr stringByAppendingString:[NSString stringWithFormat:@"%@,1,%@,",model.passenger_name,model.passenger_id_no]];
+        
+        tmpOldPassengerStr=[tmpOldPassengerStr stringByAppendingString:@"1_"];
+        
+        //  席别(座位类型),passenger_flag,passenger_type/passenger_id_type_code,乘客类型(默认 1 -> 成人票),名字,证件类型(默认 1-> 身份证),证件号,电话号码,isOldThan60/isYongThan10/isYongThan14/is_buy_ticket,allEncStr
+
+        tmpPassengerTicketStr=[tmpPassengerTicketStr stringByAppendingString:[NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@",model.xibie,model.passenger_flag,@"1",model.passenger_name,@"1",model.passenger_id_no,model.mobile_no,model.isOldThan60,model.allEncStr]];
+        
+        if (i!=self.selPassengerArr.count-1) {
+            
+            tmpPassengerTicketStr=[tmpPassengerTicketStr stringByAppendingString:@"_"];
+
+        }
+        
+    }
+    
+    [dict setObject:tmpOldPassengerStr forKey:@"oldPassengerStr"];
+
+    [dict setObject:tmpPassengerTicketStr forKey:@"passengerTicketStr"];
+
+    return dict;
+}
+
+-(NSMutableDictionary *)getQueueCountDicWithSeatType:(NSString *)seatType{
+    
+    NSMutableDictionary *dict=[NSMutableDictionary dictionary];
+    
+    [dict setObject:self.sltModel.train_date forKey:@"train_date"];
+    
+    [dict setObject:self.sltModel.train_no forKey:@"train_no"];
+
+    [dict setObject:self.sltModel.station_train_code forKey:@"stationTrainCode"];
+
+    [dict setObject:seatType forKey:@"seatType"];
+
+    [dict setObject:self.sltModel.fromStationTelecode forKey:@"fromStationTelecode"];
+
+    [dict setObject:self.sltModel.toStationTelecode forKey:@"toStationTelecode"];
+
+    [dict setObject:self.sltModel.leftTicketStr forKey:@"leftTicket"];
+    
+    [dict setObject:self.sltModel.purpose_codes forKey:@"purpose_codes"];
+
+    [dict setObject:self.sltModel.train_location forKey:@"train_location"];
+    
+    [dict setObject:@"" forKey:@"_json_att"];
+
+    [dict setObject:self.sltModel.globalRepeatSubmitToken forKey:@"REPEAT_SUBMIT_TOKEN"];
+
+    return dict;
+}
+
+
+
 @end

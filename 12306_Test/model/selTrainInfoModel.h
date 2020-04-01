@@ -34,6 +34,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong)NSMutableArray *ticket_type_codes;//乘客类型
 
+@property (nonatomic,strong)NSArray *seat_type_codes;//提供的席别类型
+
+@property (nonatomic,copy)NSString *leftTicketStr;
+
+@property (nonatomic,copy)NSString *purpose_codes;
+
+@property (nonatomic,copy)NSString *train_location;
+
+@property (nonatomic,copy)NSString *train_no;
+
+@property (nonatomic,copy)NSString *train_date;
+
+@property (nonatomic,copy)NSString *fromStationTelecode;
+
+@property (nonatomic,copy)NSString *toStationTelecode;
+
+@property (nonatomic,copy)NSString *key_check_isChange;
+
+@property (nonatomic,copy)NSString *seatDetailType;
+
 -(instancetype)initWithDic:(NSDictionary *)dic;
 
 @end

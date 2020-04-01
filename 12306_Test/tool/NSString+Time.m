@@ -53,6 +53,21 @@
     return time;
 }
 
++(NSDate *)coverTimeStrToDateWithStr:(NSString *)Str{
+    
+    NSString *birthdayStr=Str;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:8]];//解决8小时时间差问题
+    
+    NSDate *birthdayDate = [dateFormatter dateFromString:birthdayStr];
+    
+    return birthdayDate;
+}
+
 +(NSString *)coverTimeWithStr:(NSDate *)time{
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -121,5 +136,34 @@
     return newStr;
     
 }
+
+//某个 date 前- / 后+ Day 的日期
++(NSString *)currentDateToBackDateWithDate:(NSDate *)date Day:(NSInteger)day{
+    //得到当前的时间
+   
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+   
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    
+    NSDateComponents *comps = nil;
+    
+    comps = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitMonth fromDate:date];
+    
+    NSDateComponents *adcomps = [[NSDateComponents alloc] init];
+    
+    [adcomps setYear:0];
+    [adcomps setMonth:0];
+    [adcomps setDay:day];
+  
+    NSDate *newdate = [calendar dateByAddingComponents:adcomps toDate:date options:0];
+  
+    NSString *beforDate = [dateFormatter stringFromDate:newdate];
+   
+    return beforDate;
+    
+}
+
 
 @end

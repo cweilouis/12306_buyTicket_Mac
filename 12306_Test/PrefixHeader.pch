@@ -23,6 +23,9 @@
 #import "selTrainInfoModel.h"
 #import "MJExtension.h"
 #import "passengersInfoModel.h"
+#import "OSXPullToRefreshScrollView.h"
+#import "orderManageHttpRequestManager.h"
+#import "myOrderModel.h"
 //#endif
 #endif /* PrefixHeader_pch */
 

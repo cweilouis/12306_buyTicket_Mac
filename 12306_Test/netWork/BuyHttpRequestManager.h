@@ -27,7 +27,13 @@ typedef void (^FailureBlock)(NSError *error);
 
 -(void)RequestGetPassengerDTOsWithUrl:(NSString *)url  parameters:(id)parameters Success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock;
 
--(void)RequestCheckOrderInfoWithUrl:(NSString *)url  parameters:(id)parameters Success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock;
+-(void)RequestCheckOrderInfoWithUrl:(NSString *)url  parameters:(id)parameters parameters1:(id)parameters1 Success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock;
+
+-(void)RequestConfirmSingleForQueueWithUrl:(NSString *)url  parameters:(id)parameters Success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock;
+
+-(void)RequestQueryOrderWaitTimeWithUrl:(NSString *)url  parameters:(id)parameters Success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock;
+
+-(void)RequestResultOrderForDcQueueWithUrl:(NSString *)url  parameters:(id)parameters Success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock;
 
 @end
 

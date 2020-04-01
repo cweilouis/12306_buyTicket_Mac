@@ -9,5 +9,3 @@ Problem:  1. api.h 中   getRAIL_EXPIRATIONAndDEVICEIDUrl (无法加载验证码
                                     leftTicket_queryUr (无法查询余票)  
                                     请重新抓包看下是否更改
 
-
-Todo:  1.选择乘车人后提交订单

@@ -16,7 +16,7 @@ static NSString* const getJSUrl =@"https://kyfw.12306.cn/otn/HttpZF/GetJS";
 
 static NSString* const getBIGipServerpool_indexUrl =@"https://www.12306.cn/index/fonts/iconfont.ttf?t=1543666379057";
 
-static NSString* const getRAIL_EXPIRATIONAndDEVICEIDUrl= @"https://kyfw.12306.cn/otn/HttpZF/logdevice?algID=ci7sPnlIoL&hashCode=qwQDfGOrF8iewFy_9UlFfKHetzgPxjxen7_BancjinU&FMQw=0&q4f3=zh-CN&VPIf=1&custID=133&VEek=unspecified&dzuS=32.0%20r0&yD16=0&EOQP=c227b88b01f5c513710d4b9f16a5ce52&lEnu=3232239653&jp76=b34839808806e7ff02df813671ec99b3&hAqN=MacIntel&platform=WEB&ks0Q=a103db222cd8296a50268c8f0355b741&TeRS=777x1230&tOHY=24xx800x1280&Fvje=i1l1s1&q5aJ=-8&wNLf=99115dfb07133750ba677d055874de87&0aew=Mozilla/5.0%20(Macintosh;%20Intel%20Mac%20OS%20X%2010.15;%20rv:72.0)%20Gecko/20100101%20Firefox/72.0&E3gR=75fdc8defca438d41b76c9d159836ea4&timestamp=";
+static NSString* const getRAIL_EXPIRATIONAndDEVICEIDUrl= @"https://kyfw.12306.cn/otn/HttpZF/logdevice?algID=mstWn3ycFn&hashCode=NYdnQSmwz9NbqzzQzBKIQHFURrEINjOxx09671Gat3Y&FMQw=0&q4f3=zh-CN&VPIf=1&custID=133&VEek=unspecified&dzuS=0&yD16=0&EOQP=c227b88b01f5c513710d4b9f16a5ce52&jp76=d41d8cd98f00b204e9800998ecf8427e&hAqN=MacIntel&platform=WEB&ks0Q=d41d8cd98f00b204e9800998ecf8427e&TeRS=777x1230&tOHY=24xx800x1280&Fvje=i1l1s1&q5aJ=-8&wNLf=99115dfb07133750ba677d055874de87&0aew=Mozilla/5.0%20(Macintosh;%20Intel%20Mac%20OS%20X%2010.15;%20rv:74.0)%20Gecko/20100101%20Firefox/74.0&E3gR=bf9097bd0bc233cc52ab152c2dca00e7&timestamp=";
 
 static NSString* const index_otn_login_confUrl =@"https://www.12306.cn/index/otn/login/conf";
 
@@ -53,3 +53,15 @@ static NSString* const initDcUrl=@"https://kyfw.12306.cn/otn/confirmPassenger/in
 static NSString* const getPassengerDTOsUrl=@"https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs";
 
 static NSString* const checkOrderInfoUrl=@"https://kyfw.12306.cn/otn/confirmPassenger/checkOrderInfo";
+
+static NSString* const getQueueCountUrl=@"https://kyfw.12306.cn/otn/confirmPassenger/getQueueCount";
+
+static NSString* const confirmSingleForQueueUrl=@"https://kyfw.12306.cn/otn/confirmPassenger/confirmSingleForQueue";
+
+static NSString* const queryOrderWaitTimeUrl=@"https://kyfw.12306.cn/otn/confirmPassenger/queryOrderWaitTime?";
+
+static NSString* const resultOrderForDcQueueUrl=@"https://kyfw.12306.cn/otn/confirmPassenger/resultOrderForDcQueue";
+
+static NSString* const queryMyOrderNoCompleteUrl=@"https://kyfw.12306.cn/otn/queryOrder/queryMyOrderNoComplete";
+
+static NSString* const queryMyOrderUrl=@"https://kyfw.12306.cn/otn/queryOrder/queryMyOrder";

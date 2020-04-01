@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,26 +21,26 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="1217" height="250"/>
+            <rect key="frame" x="0.0" y="0.0" width="1217" height="215"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <colorWell enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOD-1X-ZQV">
-                    <rect key="frame" x="0.0" y="0.0" width="1217" height="250"/>
-                    <color key="color" name="gridColor" catalog="System" colorSpace="catalog"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1217" height="215"/>
+                    <color key="color" name="alternatingContentBackgroundColor" catalog="System" colorSpace="catalog"/>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yeN-Gs-DHe">
-                    <rect key="frame" x="15" y="200" width="991" height="30"/>
+                    <rect key="frame" x="15" y="165" width="991" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="t4Z-VK-zKG"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Label" drawsBackground="YES" id="Wf5-l0-QM9">
                         <font key="font" metaFont="system" size="20"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="alternatingContentBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="66V-ry-N39">
-                    <rect key="frame" x="15" y="156" width="48" height="24"/>
+                    <rect key="frame" x="15" y="121" width="48" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="48" id="NGp-PO-GxX"/>
                         <constraint firstAttribute="height" constant="24" id="VFK-MN-hn5"/>
@@ -47,11 +48,11 @@
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="出发地:" drawsBackground="YES" id="UcI-Ae-ovk">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="alternatingContentBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E6b-xe-Imr">
-                    <rect key="frame" x="73" y="160" width="109" height="21"/>
+                    <rect key="frame" x="73" y="125" width="109" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="GHH-xv-pz8"/>
                         <constraint firstAttribute="width" constant="109" id="Oj6-ar-bmB"/>
@@ -63,7 +64,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7CU-5u-FwH">
-                    <rect key="frame" x="287" y="156" width="48" height="24"/>
+                    <rect key="frame" x="287" y="121" width="48" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="2Iv-qz-wgP"/>
                         <constraint firstAttribute="width" constant="48" id="M2g-DH-SaH"/>
@@ -71,11 +72,11 @@
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="到达地:" drawsBackground="YES" id="Lau-IB-Nt5">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="alternatingContentBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O6P-Aj-KoP">
-                    <rect key="frame" x="345" y="160" width="109" height="21"/>
+                    <rect key="frame" x="345" y="125" width="109" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="CWl-Pt-WAd"/>
                         <constraint firstAttribute="width" constant="109" id="QWI-CY-cTL"/>
@@ -87,7 +88,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wYE-rR-Rx5">
-                    <rect key="frame" x="474" y="156" width="35" height="24"/>
+                    <rect key="frame" x="474" y="121" width="35" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="35" id="Mii-hg-GOk"/>
                         <constraint firstAttribute="height" constant="24" id="QeK-Im-j0H"/>
@@ -95,11 +96,11 @@
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="日期:" drawsBackground="YES" id="VA0-Lj-wqO">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="alternatingContentBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIh-hr-cQE">
-                    <rect key="frame" x="10" y="50" width="1197" height="47"/>
+                    <rect key="frame" x="10" y="15" width="1197" height="47"/>
                     <clipView key="contentView" id="bcF-TK-08N">
                         <rect key="frame" x="1" y="1" width="1195" height="45"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -570,7 +571,7 @@
                     </scroller>
                 </scrollView>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Il0-dH-ugE">
-                    <rect key="frame" x="10" y="96" width="1197" height="40"/>
+                    <rect key="frame" x="10" y="61" width="1197" height="40"/>
                     <clipView key="contentView" id="zJ8-VJ-G2A">
                         <rect key="frame" x="1" y="1" width="1195" height="38"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -821,10 +822,10 @@
                     </scroller>
                 </scrollView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gDs-Th-KIJ">
-                    <rect key="frame" x="723.5" y="158" width="151" height="23"/>
+                    <rect key="frame" x="1046.5" y="140" width="151" height="23"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="150" id="DDP-bp-lJP"/>
-                        <constraint firstAttribute="height" constant="22" id="xZU-gt-oOg"/>
+                        <constraint firstAttribute="height" constant="22" id="dX5-RC-eBb"/>
+                        <constraint firstAttribute="width" constant="150" id="je1-sR-gC6"/>
                     </constraints>
                     <buttonCell key="cell" type="roundTextured" title="查询" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="llT-Hv-cko">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -835,7 +836,7 @@
                     </connections>
                 </button>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rgi-0p-ONj" customClass="ASHDatePicker">
-                    <rect key="frame" x="519" y="160" width="85" height="21"/>
+                    <rect key="frame" x="519" y="125" width="85" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="9dU-2A-I9E"/>
                         <constraint firstAttribute="width" constant="85" id="Hae-rX-eA8"/>
@@ -850,7 +851,7 @@
                     </datePickerCell>
                 </datePicker>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0m8-zM-Zmg">
-                    <rect key="frame" x="201" y="153" width="72" height="32"/>
+                    <rect key="frame" x="201" y="118" width="72" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="l1b-tY-Cak"/>
                         <constraint firstAttribute="width" constant="60" id="zgW-rO-fhB"/>
@@ -863,15 +864,31 @@
                         <action selector="exchangeStationAction:" target="-2" id="23f-RJ-4el"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8z6-kt-Jta">
+                    <rect key="frame" x="1046.5" y="108" width="151" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="22T-QS-dUU"/>
+                        <constraint firstAttribute="height" constant="22" id="uVd-Xl-SH4"/>
+                    </constraints>
+                    <buttonCell key="cell" type="roundTextured" title="车票订单" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HH0-d6-X68">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="ticketOrderAction:" target="-2" id="6va-cf-GAQ"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="E6b-xe-Imr" firstAttribute="leading" secondItem="66V-ry-N39" secondAttribute="trailing" constant="10" id="28E-7u-Ykc"/>
                 <constraint firstItem="wYE-rR-Rx5" firstAttribute="leading" secondItem="O6P-Aj-KoP" secondAttribute="trailing" constant="20" id="42O-0U-tHa"/>
+                <constraint firstItem="gDs-Th-KIJ" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="52" id="6cZ-VI-I4q"/>
                 <constraint firstItem="66V-ry-N39" firstAttribute="top" secondItem="yeN-Gs-DHe" secondAttribute="bottom" constant="20" id="76x-cT-6Yp"/>
                 <constraint firstItem="rgi-0p-ONj" firstAttribute="top" secondItem="yeN-Gs-DHe" secondAttribute="bottom" constant="19" id="7Np-O2-9xm"/>
                 <constraint firstItem="7CU-5u-FwH" firstAttribute="top" secondItem="yeN-Gs-DHe" secondAttribute="bottom" constant="20" id="CQ3-Rd-YpI"/>
                 <constraint firstItem="0m8-zM-Zmg" firstAttribute="centerY" secondItem="E6b-xe-Imr" secondAttribute="centerY" id="Dz3-Lr-lnT"/>
                 <constraint firstAttribute="trailing" secondItem="Il0-dH-ugE" secondAttribute="trailing" constant="10" id="FFk-10-KCj"/>
+                <constraint firstAttribute="trailing" secondItem="gDs-Th-KIJ" secondAttribute="trailing" constant="20" id="HuP-nX-r4O"/>
                 <constraint firstItem="O6P-Aj-KoP" firstAttribute="centerY" secondItem="7CU-5u-FwH" secondAttribute="centerY" constant="-2.5" id="JT3-AV-EL3"/>
                 <constraint firstAttribute="bottom" secondItem="EOD-1X-ZQV" secondAttribute="bottom" id="NFr-fs-d99"/>
                 <constraint firstItem="EOD-1X-ZQV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="NZL-zv-ffO"/>
@@ -880,8 +897,8 @@
                 <constraint firstItem="yeN-Gs-DHe" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="15" id="RYC-VA-XR7"/>
                 <constraint firstItem="rgi-0p-ONj" firstAttribute="leading" secondItem="wYE-rR-Rx5" secondAttribute="trailing" constant="10" id="T0H-ep-yY5"/>
                 <constraint firstItem="EOD-1X-ZQV" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="T1t-KK-yEq"/>
-                <constraint firstAttribute="bottom" secondItem="ZIh-hr-cQE" secondAttribute="bottom" constant="50" id="ZEb-Cp-NFa"/>
-                <constraint firstItem="gDs-Th-KIJ" firstAttribute="centerY" secondItem="wYE-rR-Rx5" secondAttribute="centerY" constant="-2" id="b82-SV-Dla"/>
+                <constraint firstAttribute="bottom" secondItem="ZIh-hr-cQE" secondAttribute="bottom" constant="15" id="ZEb-Cp-NFa"/>
+                <constraint firstItem="8z6-kt-Jta" firstAttribute="top" secondItem="gDs-Th-KIJ" secondAttribute="bottom" constant="10" id="aJv-ON-wVE"/>
                 <constraint firstAttribute="trailing" secondItem="EOD-1X-ZQV" secondAttribute="trailing" id="bra-th-fXP"/>
                 <constraint firstItem="ZIh-hr-cQE" firstAttribute="top" secondItem="66V-ry-N39" secondAttribute="bottom" constant="59" id="dME-MT-KR8"/>
                 <constraint firstItem="Il0-dH-ugE" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="lgW-To-F9M"/>
@@ -893,7 +910,7 @@
                 <constraint firstItem="66V-ry-N39" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="15" id="ucP-xQ-Qmf"/>
                 <constraint firstItem="7CU-5u-FwH" firstAttribute="leading" secondItem="E6b-xe-Imr" secondAttribute="trailing" constant="105" id="x0z-05-17r"/>
                 <constraint firstAttribute="trailing" secondItem="ZIh-hr-cQE" secondAttribute="trailing" constant="10" id="xbE-ka-KMi"/>
-                <constraint firstItem="gDs-Th-KIJ" firstAttribute="leading" secondItem="rgi-0p-ONj" secondAttribute="trailing" constant="120" id="y3S-kC-M8t"/>
+                <constraint firstAttribute="trailing" secondItem="8z6-kt-Jta" secondAttribute="trailing" constant="20" id="xoj-xz-JXk"/>
                 <constraint firstItem="E6b-xe-Imr" firstAttribute="centerY" secondItem="66V-ry-N39" secondAttribute="centerY" constant="-2.5" id="zlu-IK-jPi"/>
             </constraints>
             <point key="canvasLocation" x="386.5" y="218"/>

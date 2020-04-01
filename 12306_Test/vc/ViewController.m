@@ -111,7 +111,7 @@
                 
                 [self.touchPointArr removeObjectAtIndex:i];
                 
-                for (NSView *tmpView in self.codeImage.subviews) {
+                for (NSImageView *tmpView in self.codeImage.subviews) {
                     
                     if (CGRectContainsRect(view.frame, tmpView.frame)) {
                         
@@ -137,11 +137,13 @@
                 
         [self.touchPointArr addObject:@{@"x":[NSString stringWithFormat:@"%f",fabsf(ceilf(touchPoint.x-10)) ],@"y":[NSString stringWithFormat:@"%f",fabsf(160-ceilf(touchPoint.y))]}];
         
-        NSView *view=[[NSView alloc]initWithFrame:CGRectMake(touchPoint.x-10, touchPoint.y-10, 20, 20)];
+        NSImageView *view=[[NSImageView alloc]initWithFrame:CGRectMake(touchPoint.x-10, touchPoint.y-10, 20, 20)];
+        
+        view.image=[NSImage imageNamed:@"huoche"];
         
         view.wantsLayer = YES;
        
-        view.layer.backgroundColor = [NSColor redColor].CGColor;
+//        view.layer.backgroundColor = [NSColor redColor].CGColor;
 
         [self.codeImage addSubview:view];
         
@@ -191,7 +193,7 @@
 }
 
 - (IBAction)login:(id)sender {
-     
+    
     if (self.passwordTf.stringValue.length<1) {
      
         NSLog(@"请输入账号!");
@@ -321,6 +323,7 @@
             ticketsVC *vc=[[ticketsVC alloc]init];
                
             vc.nameStr=[NSString stringWithFormat:@"%@  %@",data[@"data"][@"user_name"],data[@"data"][@"user_regard"]];
+            
             
             [weakself presentViewControllerAsModalWindow:vc];
             

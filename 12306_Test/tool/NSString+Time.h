@@ -24,4 +24,8 @@
 
 +(NSString *)coverStrWithStr:(NSString *)str;
 
++(NSString *)currentDateToBackDateWithDate:(NSDate *)date Day:(NSInteger)day;
+
++(NSDate *)coverTimeStrToDateWithStr:(NSString *)Str;
+
 @end
