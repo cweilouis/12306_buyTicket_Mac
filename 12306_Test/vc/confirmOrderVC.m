@@ -252,14 +252,12 @@
     [[BuyHttpRequestManager shaerd]RequestQueryOrderWaitTimeWithUrl:[NSString stringWithFormat:@"%@random=%@&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=%@",queryOrderWaitTimeUrl,[NSString currentTimeStamp],self.getQueueCountData[@"REPEAT_SUBMIT_TOKEN"]] parameters:nil Success:^(NSDictionary * _Nonnull data) {
     
         if (data && data.count>0) {
-    
+
             if (weakSelf.isHaveResult) return ;
-            
-            weakSelf.isHaveResult=YES;
-                          
+               
             [weakSelf.timer setFireDate:[NSDate distantFuture]];
 
-            if ([data[@"msg"] length] <1 && ![data[@"orderId"] isKindOfClass:[NSNull class]]) {
+            if (![data[@"orderId"] isKindOfClass:[NSNull class]]) {
                
                 //确认订单下单是否成功
                 [weakSelf RequestResultOrderForDcQueueWithorderSequence_no:data[@"orderId"]];
@@ -271,6 +269,8 @@
                 [weakSelf hideHudWith:YES];
                 
             }
+            
+            weakSelf.isHaveResult=YES;
         }
 
     } failure:^(NSError * _Nonnull error) {
