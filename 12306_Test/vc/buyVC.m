@@ -191,7 +191,7 @@
         
         if (index_idLab) {
             
-            index_idLab.stringValue=[NSString stringWithFormat:@"%d",model.index_id.intValue+1];
+            index_idLab.stringValue=[NSString stringWithFormat:@"%ld",index+1];
         }
         
         NSPopUpButton *xibie=[cellView viewWithTag:103];
