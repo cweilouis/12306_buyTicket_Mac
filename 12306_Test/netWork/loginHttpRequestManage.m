@@ -2,7 +2,7 @@
 //  httpRequestManage.m
 //  12306_Test
 //
-//  Created by 曹巍 on 2020/1/13.
+//  Created by cwei on 2020/1/13.
 //  Copyright © 2020 louis. All rights reserved.
 //
 static NSString *const cookieDicKey = @"cookieDic";

@@ -2,7 +2,7 @@
 //  searchTicketModel.h
 //  12306_Test
 //
-//  Created by 曹巍 on 2020/3/2.
+//  Created by cwei on 2020/3/2.
 //  Copyright © 2020 louis. All rights reserved.
 //
 

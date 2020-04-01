@@ -2,7 +2,7 @@
 //  NSString+Time.m
 //  ihome
 //
-//  Created by HGWong on 8/18/15.
+//  Created by cwei on 8/18/15.
 //  Copyright (c) 2015 Boer. All rights reserved.
 //
 

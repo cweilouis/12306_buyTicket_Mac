@@ -2,7 +2,7 @@
 //  buyVC.m
 //  12306_Test
 //
-//  Created by 曹巍 on 2020/3/5.
+//  Created by cwei on 2020/3/5.
 //  Copyright © 2020 louis. All rights reserved.
 //
 
