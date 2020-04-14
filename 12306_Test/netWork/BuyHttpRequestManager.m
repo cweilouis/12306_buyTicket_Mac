@@ -300,9 +300,16 @@ static NSString *const cookieDicKey = @"cookieDic";
                                 successBlock(dic);
 
                             }else{
-                             
-                                NSLog(@"%@ -- %@",urlString,[dic[@"messages"]firstObject]);
-                                
+                               
+                                if ([dic[@"messages"]count] >0) {
+                                    
+                                    NSLog(@"%@ -- %@",urlString,[dic[@"messages"]firstObject]);
+
+                                }else{
+                                    
+                                    NSLog(@"%@ -- %@",urlString,dic[@"data"][@"errMsg"]);
+
+                                }
                                 successBlock(nil);
 
                             }
@@ -473,7 +480,15 @@ static NSString *const cookieDicKey = @"cookieDic";
 
     if (dict) {
         
-        if ([urlStr containsString:checkUserUrl] || [urlStr containsString:submitOrderRequestUrl] || [urlStr containsString:initDcUrl] || [urlStr containsString:getPassengerDTOsUrl] || [urlStr containsString:checkOrderInfoUrl] || [urlStr containsString:getQueueCountUrl] || [urlStr containsString:confirmSingleForQueueUrl] || [urlStr containsString:queryOrderWaitTimeUrl]){
+        if ([urlStr containsString:checkUserUrl] ||
+            [urlStr containsString:submitOrderRequestUrl] ||
+            [urlStr containsString:initDcUrl] ||
+            [urlStr containsString:getPassengerDTOsUrl] ||
+            [urlStr containsString:checkOrderInfoUrl] ||
+            [urlStr containsString:getQueueCountUrl] ||
+            [urlStr containsString:confirmSingleForQueueUrl] ||
+            [urlStr containsString:queryOrderWaitTimeUrl] ||
+            [urlStr containsString:resultOrderForDcQueueUrl]){
             
             cookieStr=[NSString stringWithFormat:@"%@%@=%@;%@=%@;%@=%@;%@=%@;%@=%@;%@=%@;%@=%@;%@=%@;%@=%@;%@=%@",[[[NSUserDefaults standardUserDefaults]objectForKey:cookieDicKey]objectForKey:RAIL_EXPIRATIONAndDEVICEIDKey],@"BIGipServerotn",[[[NSUserDefaults standardUserDefaults]objectForKey:cookieDicKey]objectForKey:@"BIGipServerotn"],@"BIGipServerpool_passport",[[[NSUserDefaults standardUserDefaults]objectForKey:cookieDicKey]objectForKey:@"BIGipServerpool_passport"],@"route",[[[NSUserDefaults standardUserDefaults]objectForKey:cookieDicKey]objectForKey:@"route"],@"JSESSIONID",[[[NSUserDefaults standardUserDefaults]objectForKey:cookieDicKey]objectForKey:@"JSESSIONID"],@"tk",[[[NSUserDefaults standardUserDefaults]objectForKey:cookieDicKey]objectForKey:@"tk"],@"_jc_save_fromDate",[[[NSUserDefaults standardUserDefaults]objectForKey:cookieDicKey]objectForKey:@"_jc_save_fromDate"],@"_jc_save_fromStation",[[[NSUserDefaults standardUserDefaults]objectForKey:cookieDicKey]objectForKey:@"_jc_save_fromStation"],@"_jc_save_toDate",[[[NSUserDefaults standardUserDefaults]objectForKey:cookieDicKey]objectForKey:@"_jc_save_toDate"],@"_jc_save_toStation",[[[NSUserDefaults standardUserDefaults]objectForKey:cookieDicKey]objectForKey:@"_jc_save_toStation"],@"_jc_save_wfdc_flag",[[[NSUserDefaults standardUserDefaults]objectForKey:cookieDicKey]objectForKey:@"_jc_save_wfdc_flag"]];
 
@@ -539,7 +554,10 @@ static NSString *const cookieDicKey = @"cookieDic";
 
           }
       
-    }else if ([urlStr containsString:checkOrderInfoUrl] || [urlStr containsString:getQueueCountUrl] || [urlStr containsString:confirmSingleForQueueUrl]){
+    }else if ([urlStr containsString:checkOrderInfoUrl] ||
+              [urlStr containsString:getQueueCountUrl] ||
+              [urlStr containsString:confirmSingleForQueueUrl] ||
+              [urlStr containsString:resultOrderForDcQueueUrl]){
           
           if (cookieStr.length>0) {
                      
@@ -774,21 +792,18 @@ static NSString *const cookieDicKey = @"cookieDic";
     
     [self postWithURLString:url parameters:parameters successblock:successBlock failureblock:failureBlock];
 
-    //{"表单数据":{"passengerTicketStr":"O,0,1,曹巍,1,3206***********21X,199****8632,N,9d2aabf0ad05fa3aadd2e99841a7b9309d30fefe017fc3f2a78dc5b4f757935ecb5fab5c4e29e1a8a7e2f604516be9c27f482f0d1cfa716007286882a787c716ab1cfc308cb6de65111b75003c148683_O,0,1,陈卫菊,1,3206***********689,13961894264,N,2a7e39702d29bd0e2db78f11562a2d8761cb70624ed458e8057f0691dd91d1ca84d5b358bf0c7caf5d211cde1e76197bb14082b199c63bba9008ed83ade31e17","oldPassengerStr":"曹巍,1,3206***********21X,1_陈卫菊,1,3206***********689,1_","randCode":"","purpose_codes":"00","key_check_isChange":"A3060AC4809CB48511E84542B6F9F74A6E1185FED354375E26F3CA5D","leftTicketStr":"P%2BGaipxeMnbUvQq0iTYtSUFoC4PC3Xg7DEduZHyVJ5KfVPPBTWCcsLcrgnQ%3D","train_location":"H1","choose_seats":"1B2B","seatDetailType":"000","whatsSelect":"1","roomType":"00","dwAll":"N","_json_att":"","REPEAT_SUBMIT_TOKEN":"443e9600dcaefe96a8c9e606aebf8b8f"}}
 }
 
 -(void)RequestQueryOrderWaitTimeWithUrl:(NSString *)url  parameters:(id)parameters Success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock{
 
     [self getWithURLString:url parameters:parameters success:successBlock failure:failureBlock];
 
-    //{"查询字符串":{"random":"1585362641200","tourFlag":"dc","_json_att":"","REPEAT_SUBMIT_TOKEN":"443e9600dcaefe96a8c9e606aebf8b8f"}}
 }
 
 -(void)RequestResultOrderForDcQueueWithUrl:(NSString *)url  parameters:(id)parameters Success:(SuccessBlock)successBlock failure:(FailureBlock)failureBlock{
  
     [self postWithURLString:url parameters:parameters successblock:successBlock failureblock:failureBlock];
 
-    //{"表单数据":{"orderSequence_no":"EA56559501","_json_att":"","REPEAT_SUBMIT_TOKEN":"443e9600dcaefe96a8c9e606aebf8b8f"}}
 }
 
 @end

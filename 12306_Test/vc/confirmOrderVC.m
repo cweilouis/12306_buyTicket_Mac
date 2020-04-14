@@ -17,6 +17,8 @@
 @property (weak) IBOutlet NSButton *sureBtn;
 @property (nonnull,strong)NSTimer *timer;
 @property (nonatomic,assign)BOOL isHaveResult;
+@property (nonatomic,assign)BOOL isProcessing;
+
 @end
 
 @implementation confirmOrderVC
@@ -69,13 +71,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+                
     self.timer=[NSTimer timerWithTimeInterval:5 target:self selector:@selector(requestTime) userInfo:nil repeats:YES];
-       
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-    
-    [self.timer setFireDate:[NSDate distantFuture]];
 
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+
+    [self.timer setFireDate:[NSDate distantFuture]];
     
     self.tableView.selectionHighlightStyle=NSTableViewSelectionHighlightStyleNone;
 
@@ -219,10 +220,18 @@
           
         if (data && data.count>0) {
         
-            [weakself RequestQueryOrderWaitTime];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                [weakself RequestQueryOrderWaitTime];
+
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                   
+                    [weakself.timer setFireDate:[NSDate distantPast]];
+
+                });
             
-            [weakself.timer setFireDate:[NSDate distantPast]];
-           
+            });
+                       
         }else{
             
             [weakself hideHudWith:YES];
@@ -236,61 +245,65 @@
 }
 
 -(void)requestTime{
-    
-    if (!self.isHaveResult) {
-                
+
+    if (!self.isHaveResult && !self.isProcessing) {
+
         [self RequestQueryOrderWaitTime];
     }
-    
+
 }
 
 
 -(void)RequestQueryOrderWaitTime{
     
     __weak typeof(self)weakSelf=self;
-        
-    [[BuyHttpRequestManager shaerd]RequestQueryOrderWaitTimeWithUrl:[NSString stringWithFormat:@"%@random=%@&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=%@",queryOrderWaitTimeUrl,[NSString currentTimeStamp],self.getQueueCountData[@"REPEAT_SUBMIT_TOKEN"]] parameters:nil Success:^(NSDictionary * _Nonnull data) {
     
-        if (data && data.count>0) {
+    [[BuyHttpRequestManager shaerd]RequestQueryOrderWaitTimeWithUrl:[NSString stringWithFormat:@"%@random=%@&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=%@",queryOrderWaitTimeUrl,[NSString currentTimeStamp],self.getQueueCountData[@"REPEAT_SUBMIT_TOKEN"]] parameters:nil Success:^(NSDictionary * _Nonnull data) {
 
-            if (weakSelf.isHaveResult) return ;
-               
+        if (data && data.count>0) {
+            
             [weakSelf.timer setFireDate:[NSDate distantFuture]];
 
+            if (weakSelf.isHaveResult) return ;
+
+            weakSelf.isProcessing=YES;
+
             if (![data[@"orderId"] isKindOfClass:[NSNull class]]) {
-               
+                
                 //确认订单下单是否成功
                 [weakSelf RequestResultOrderForDcQueueWithorderSequence_no:data[@"orderId"]];
-           
+
             }else {
-                
+
                 NSLog(@"%@",data[@"msg"]);
-                
+
                 [weakSelf hideHudWith:YES];
-                
+
             }
-            
+
             weakSelf.isHaveResult=YES;
         }
 
     } failure:^(NSError * _Nonnull error) {
-    
-        [weakSelf.timer setFireDate:[NSDate distantFuture]];
-        
+
         [weakSelf hideHudWith:YES];
+
+        [weakSelf.timer setFireDate:[NSDate distantFuture]];
+
+        weakSelf.isHaveResult=YES;
 
     }];
     
 }
 
 -(void)RequestResultOrderForDcQueueWithorderSequence_no:(NSString *)orderSequence_no{
-    
-    __weak typeof(self)weakSelf=self;
 
+    __weak typeof(self)weakSelf=self;
+    
     [[BuyHttpRequestManager shaerd]RequestResultOrderForDcQueueWithUrl:resultOrderForDcQueueUrl parameters:@{@"orderSequence_no":orderSequence_no,@"_json_att":@"",@"REPEAT_SUBMIT_TOKEN":self.getQueueCountData[@"REPEAT_SUBMIT_TOKEN"]} Success:^(NSDictionary * _Nonnull data) {
         
         if (data && data.count>0) {
-        
+       
             [weakSelf hideHudWith:YES];
             
             NSLog(@"订票成功,请尽快去支付!");
@@ -306,10 +319,13 @@
                         
         }
         
-        
+        self.isProcessing=NO;
+
     } failure:^(NSError * _Nonnull error) {
 
         NSLog(@"订票失败!");
+        
+        self.isProcessing=NO;
         
         [weakSelf hideHudWith:YES];
         
@@ -408,11 +424,19 @@
         
         if (self.tableView.hidden) {
             
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            if ([[MBProgressHUD allHUDsForView:self.view]count]>0) {
+                
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
+            }
 
         }else{
-         
-            [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
+            
+            if ([[MBProgressHUD allHUDsForView:self.tableView]count]>0) {
+                
+                [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
+
+            }
 
         }
         

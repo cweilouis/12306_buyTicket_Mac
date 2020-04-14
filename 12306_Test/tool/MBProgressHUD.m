@@ -546,13 +546,18 @@ static const CGFloat kDetailsLabelFontSize = 12.0f;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
     self.hidden = NO;
 	if (animated) {
-        [NSAnimationContext beginGrouping];
-        [[NSAnimationContext currentContext] setDuration:0.30];
-        [[self animator] setAlphaValue:1.0f];
-        if (animationType == MBProgressHUDAnimationZoomIn || animationType == MBProgressHUDAnimationZoomOut) {
-			[(CALayer *)[self animator] setAffineTransform:rotationTransform];
-		}
-        [NSAnimationContext endGrouping];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            [NSAnimationContext beginGrouping];
+                   [[NSAnimationContext currentContext] setDuration:0.30];
+                   [[self animator] setAlphaValue:1.0f];
+                   if (animationType == MBProgressHUDAnimationZoomIn || animationType == MBProgressHUDAnimationZoomOut) {
+                       [(CALayer *)[self animator] setAffineTransform:rotationTransform];
+                   }
+                   [NSAnimationContext endGrouping];
+        });
+       
 	}
 	else {
 		self.alphaValue = 1.0f;
@@ -819,7 +824,7 @@ static const CGFloat kDetailsLabelFontSize = 12.0f;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
         self.indicator = MB_AUTORELEASE([[YRKSpinningProgressIndicator alloc] initWithFrame:NSMakeRect(20, 20, self.spinsize, self.spinsize)]);
         // [(YRKSpinningProgressIndicator *)self.indicator setStyle:NSProgressIndicatorSpinningStyle];
-        [(YRKSpinningProgressIndicator *)self.indicator setColor:[NSColor whiteColor]];
+        [(YRKSpinningProgressIndicator *)self.indicator setColor:[NSColor lightGrayColor]];
         [(YRKSpinningProgressIndicator *)self.indicator setUsesThreadedAnimation:NO];
         [(YRKSpinningProgressIndicator *)self.indicator startAnimation:self];
 #endif  // (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
